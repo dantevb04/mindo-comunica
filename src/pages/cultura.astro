@@ -1,0 +1,185 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const experiencias = [
+  {
+    icono: "🎭",
+    categoria: "TRADICIONES",
+    titulo: "Tradiciones de nuestra comunidad",
+    descripcion: "Conoce las costumbres, celebraciones y expresiones culturales que forman parte de la identidad local.",
+  },
+  {
+    icono: "🎨",
+    categoria: "ARTE Y CREATIVIDAD",
+    titulo: "El talento de nuestra gente",
+    descripcion: "Descubre a las personas que expresan su creatividad mediante el arte, las artesanías y la cultura.",
+  },
+  {
+    icono: "🍫",
+    categoria: "GASTRONOMÍA",
+    titulo: "Sabores de Mindo",
+    descripcion: "Explora productos, sabores y experiencias gastronómicas ofrecidas por emprendimientos locales.",
+  },
+  {
+    icono: "📸",
+    categoria: "HISTORIAS LOCALES",
+    titulo: "Memorias de nuestra tierra",
+    descripcion: "Un espacio para compartir historias, fotografías y recuerdos de la comunidad.",
+  },
+];
+---
+
+<Layout titulo="Cultura">
+  <section class="culture-hero">
+    <div class="container">
+      <span class="eyebrow">IDENTIDAD · HISTORIA · TRADICIÓN</span>
+      <h1>La cultura que<br /><span>nos une.</span></h1>
+      <p>
+        Historias, tradiciones, creatividad y experiencias que dan vida
+        a la identidad de nuestra comunidad.
+      </p>
+      <a href="#experiencias" class="btn">Explorar cultura ↓</a>
+    </div>
+  </section>
+
+  <section class="section" id="experiencias">
+    <div class="container">
+      <span class="section-label">NUESTRA IDENTIDAD</span>
+      <h2 class="section-title">Cultura viva de Mindo</h2>
+      <p class="section-description">
+        Un espacio para conocer y valorar las expresiones culturales,
+        los sabores y las historias de nuestra localidad.
+      </p>
+
+      <div class="culture-grid">
+        {experiencias.map((item) => (
+          <article class="culture-card">
+            <div class="culture-icon">{item.icono}</div>
+            <span class="category">{item.categoria}</span>
+            <h3>{item.titulo}</h3>
+            <p>{item.descripcion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="culture-bottom">
+    <div class="container">
+      <span class="section-label">VOCES DE LA COMUNIDAD</span>
+      <h2>Las mejores historias empiezan con nuestra gente.</h2>
+      <p>
+        ¿Conoces una tradición, una historia o una iniciativa cultural que
+        merece ser compartida? Escríbenos y ayúdanos a contarla.
+      </p>
+      <a href="/contacto/" class="btn">Compartir una historia →</a>
+    </div>
+  </section>
+</Layout>
+
+
+<style>
+  .culture-hero {
+    padding: 80px 0;
+    color: white;
+    background: linear-gradient(120deg, #123b66, #1976d2);
+  }
+
+  .eyebrow {
+    color: #bbdefb;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+  }
+
+  .culture-hero h1 {
+    margin: 20px 0;
+    font-size: clamp(40px, 6vw, 66px);
+    line-height: 1.08;
+  }
+
+  .culture-hero h1 span {
+    color: #90caf9;
+  }
+
+  .culture-hero p {
+    max-width: 610px;
+    color: #eaf4ff;
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-label,
+  .category {
+    color: #1976d2;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+
+  .culture-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+  }
+
+  .culture-card {
+    padding: 28px;
+    background: white;
+    border: 1px solid #d6e6f5;
+    border-radius: 16px;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .culture-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px rgba(18, 59, 102, 0.12);
+  }
+
+  .culture-icon {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    background: #eaf4ff;
+    border-radius: 16px;
+    font-size: 32px;
+  }
+
+  .culture-card h3 {
+    margin: 12px 0 8px;
+    font-size: 22px;
+    color: #123b66;
+  }
+
+  .culture-card p,
+  .culture-bottom p {
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  .culture-bottom {
+    padding: 60px 0;
+    background: #eaf4ff;
+  }
+
+  .culture-bottom h2 {
+    max-width: 700px;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+    color: #123b66;
+  }
+
+  .culture-bottom p {
+    max-width: 650px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .culture-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

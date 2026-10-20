@@ -1,0 +1,66 @@
+
+<footer class="footer">
+  <div class="footer-contenido">
+    <a href="/" class="logo-footer">
+      <img src="/2.png" alt="Logo de Mindo Comunica" />
+    </a>
+
+    <p>
+      Conectamos a la comunidad de Mindo con información,
+      turismo, cultura y sostenibilidad.
+    </p>
+
+    <nav>
+      <a href="/">Inicio</a>
+      <a href="/noticias/">Noticias</a>
+      <a href="/negocios/">Negocios</a>
+      <a href="/contacto/">Contacto</a>
+    </nav>
+
+    <p class="copyright">
+      © {new Date().getFullYear()} Mindo Comunica. Todos los derechos reservados.
+    </p>
+  </div>
+</footer>
+
+<style>
+  .footer {
+    background: #173d29;
+    color: white;
+    padding: 35px 7% 20px;
+    text-align: center;
+  }
+
+  .logo-footer img {
+    width: 150px;
+    height: 100px;
+    object-fit: contain;
+  }
+
+  .footer-contenido > p {
+    line-height: 1.7;
+  }
+
+  .footer nav {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin: 22px 0;
+  }
+
+  .footer nav a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .footer nav a:hover {
+    color: #a8e6b5;
+  }
+
+  .copyright {
+    border-top: 1px solid #ffffff30;
+    padding-top: 15px;
+    font-size: 13px;
+  }
+</style>

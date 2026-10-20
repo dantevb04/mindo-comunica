@@ -1,0 +1,267 @@
+---
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="Contacto | Mindo Comunica">
+  <main class="contacto">
+    <section class="encabezado">
+      <span class="etiqueta">MINDO COMUNICA</span>
+      <h1>Contáctanos</h1>
+      <p>
+        Estamos en Mindo, Ecuador. Conoce nuestros datos de contacto
+        y síguenos en nuestras redes sociales.
+      </p>
+    </section>
+
+    <section class="tarjeta-contacto">
+      <div class="dato">
+        <span class="icono">📍</span>
+        <div>
+          <h2>Ubicación</h2>
+          <p>MINDO - ECUADOR</p>
+        </div>
+      </div>
+
+      <div class="dato">
+        <span class="icono">📱</span>
+        <div>
+          <h2>WhatsApp</h2>
+          <a
+            class="red whatsapp"
+            href="https://wa.me/593989749675"
+            target="_blank"
+            rel="noopener noreferrer"
+            aria-label="Contactar a Mindo Comunica por WhatsApp"
+            title="WhatsApp"
+          >
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path d="M12 2a10 10 0 0 0-8.7 14.9L2 22l5.3-1.4A10 10 0 1 0 12 2zm0 18a8 8 0 0 1-4.1-1.1l-.3-.2-3.2.8.9-3.1-.2-.3A8 8 0 1 1 12 20zm4.4-6c-.2-.1-1.5-.7-1.7-.8-.2-.1-.4-.1-.5.1l-.8.9c-.1.2-.3.2-.5.1a6.5 6.5 0 0 1-2-1.2 7.4 7.4 0 0 1-1.4-1.7c-.2-.2 0-.4.1-.5l.4-.5.2-.4c.1-.2 0-.3 0-.5l-.8-1.8c-.2-.5-.4-.4-.6-.4h-.5c-.2 0-.5.1-.7.3-.2.2-.9.9-.9 2.1s.9 2.4 1 2.6c.1.2 1.8 2.8 4.4 3.9.6.2 1 .4 1.4.4.6.2 1.1.1 1.5.1.5-.1 1.5-.6 1.7-1.2.2-.6.2-1.1.2-1.2-.1-.1-.3-.2-.5-.3z"/>
+            </svg>
+            <span>WhatsApp</span>
+          </a>
+        </div>
+      </div>
+
+      <div class="dato correo">
+        <span class="icono">✉️</span>
+        <div>
+          <h2>Correo electrónico</h2>
+          <p>MINDOCOMUNICA@OUTLOOK.ES</p>
+        </div>
+      </div>
+
+      <div class="dato redes">
+        <span class="icono">🌐</span>
+        <div>
+          <h2>Síguenos en redes sociales</h2>
+
+          <div class="redes-sociales">
+            <a
+              href="https://www.facebook.com/profile.php?id=61571009648202"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Facebook de Mindo Comunica"
+              title="Facebook"
+              class="red facebook"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M13.5 21v-8.2h2.8l.4-3.2h-3.2V7.5c0-.9.3-1.6 1.6-1.6h1.7V3.1c-.3 0-1.4-.1-2.6-.1-2.6 0-4.3 1.6-4.3 4.5v2.1H7v3.2h2.9V21z"/>
+              </svg>
+              <span>Facebook</span>
+            </a>
+
+            <a
+              href="https://www.tiktok.com/@mindocomunicaec"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="TikTok de Mindo Comunica"
+              title="TikTok"
+              class="red tiktok"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <path d="M19.6 7.2a6.4 6.4 0 0 1-4-1.4v8.1a6.1 6.1 0 1 1-5.3-6.1v3.3a2.8 2.8 0 1 0 2 2.7V2.5h3.3c.2 2 1.8 3.7 4 4z"/>
+              </svg>
+              <span>TikTok</span>
+            </a>
+
+            <a
+              href="https://www.instagram.com/MINDOCOMUNICA"
+              target="_blank"
+              rel="noopener noreferrer"
+              aria-label="Instagram de Mindo Comunica"
+              title="Instagram"
+              class="red instagram"
+            >
+              <svg viewBox="0 0 24 24" aria-hidden="true">
+                <rect x="3" y="3" width="18" height="18" rx="5" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="12" cy="12" r="4" fill="none" stroke="currentColor" stroke-width="2"/>
+                <circle cx="17.5" cy="6.8" r="1.2"/>
+              </svg>
+              <span>Instagram</span>
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <p class="frase">
+      Mindo Comunica: información, comunidad y conexión.
+    </p>
+  </main>
+</Layout>
+
+<style>
+  .contacto {
+    min-height: 75vh;
+    padding: 60px 7%;
+    background: #F0F7FF;
+    color: #123B5D;
+  }
+
+  .encabezado {
+    max-width: 760px;
+    margin: 0 auto 40px;
+    text-align: center;
+  }
+
+  .etiqueta {
+    display: inline-block;
+    margin-bottom: 12px;
+    color: #1769AA;
+    font-size: 13px;
+    font-weight: 700;
+    letter-spacing: 2px;
+  }
+
+  .encabezado h1 {
+    margin: 0 0 16px;
+    color: #123B5D;
+    font-size: clamp(32px, 5vw, 46px);
+  }
+
+  .encabezado p {
+    color: #36566F;
+    font-size: 17px;
+    line-height: 1.8;
+  }
+
+  .tarjeta-contacto {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 12px 28px;
+    background: #DCEEFF;
+    border: 1px solid #B9DCFF;
+    border-radius: 18px;
+  }
+
+  .dato {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 25px 15px;
+    min-width: 0;
+  }
+
+  .icono {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    width: 52px;
+    height: 52px;
+    background: #B9DCFF;
+    border-radius: 14px;
+    font-size: 25px;
+  }
+
+  .dato h2 {
+    margin: 0 0 10px;
+    color: #1769AA;
+    font-size: 17px;
+  }
+
+  .dato p {
+    margin: 0;
+    color: #123B5D;
+    font-size: 14px;
+    font-weight: 600;
+    overflow-wrap: anywhere;
+  }
+
+  .redes-sociales {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 16px;
+  }
+
+  .red {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    width: 88px;
+    min-height: 82px;
+    padding: 12px 8px;
+    border-radius: 14px;
+    background: #B9DCFF;
+    color: #1769AA;
+    text-decoration: none;
+    font-size: 12px;
+    font-weight: 700;
+    transition: transform 0.2s ease, background 0.2s ease;
+  }
+
+  .red svg {
+    width: 28px;
+    height: 28px;
+    fill: currentColor;
+  }
+
+  .red:hover {
+    background: #9CCEFF;
+    color: #123B5D;
+    transform: translateY(-3px);
+  }
+
+  .red:focus-visible {
+    outline: 2px solid #1769AA;
+    outline-offset: 4px;
+  }
+
+  .frase {
+    margin: 30px auto 0;
+    color: #36566F;
+    text-align: center;
+    font-size: 15px;
+    font-weight: 600;
+  }
+
+  @media (max-width: 700px) {
+    .contacto {
+      padding: 40px 5%;
+    }
+
+    .tarjeta-contacto {
+      grid-template-columns: 1fr;
+      padding: 8px 16px;
+    }
+
+    .dato {
+      padding: 20px 5px;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .redes-sociales {
+      gap: 8px;
+    }
+
+    .red {
+      width: 76px;
+    }
+  }
+</style>

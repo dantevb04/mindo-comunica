@@ -1,0 +1,182 @@
+---
+import Layout from "../layouts/Layout.astro";
+
+const actividades = [
+  {
+    icono: "⚽",
+    categoria: "FÚTBOL",
+    titulo: "Pasión por el fútbol",
+    descripcion: "Un espacio para informar sobre encuentros, equipos y actividades futbolísticas de la comunidad.",
+  },
+  {
+    icono: "🚴",
+    categoria: "CICLISMO",
+    titulo: "Aventura sobre ruedas",
+    descripcion: "Conoce iniciativas y recorridos deportivos para disfrutar del entorno natural con responsabilidad.",
+  },
+  {
+    icono: "🏃",
+    categoria: "ATLETISMO",
+    titulo: "Muévete por tu bienestar",
+    descripcion: "Promovemos la actividad física, las carreras locales y los hábitos saludables.",
+  },
+  {
+    icono: "🏆",
+    categoria: "EVENTOS",
+    titulo: "El deporte nos conecta",
+    descripcion: "Un espacio para compartir torneos, resultados y logros de deportistas locales.",
+  },
+];
+---
+
+<Layout titulo="Deportes">
+  <section class="sports-hero">
+    <div class="container">
+      <span class="eyebrow">ENERGÍA · EQUIPO · COMUNIDAD</span>
+      <h1>El deporte nos<br /><span>mueve.</span></h1>
+      <p>
+        Conoce las actividades deportivas, los encuentros y las historias
+        de quienes representan el espíritu de nuestra comunidad.
+      </p>
+      <a href="#actividades" class="btn">Explorar deportes ↓</a>
+    </div>
+  </section>
+
+  <section class="section" id="actividades">
+    <div class="container">
+      <span class="section-label">DEPORTE LOCAL</span>
+      <h2 class="section-title">Actividad, salud y compañerismo</h2>
+      <p class="section-description">
+        Un lugar para destacar las iniciativas deportivas y fomentar
+        la participación de niños, jóvenes y adultos.
+      </p>
+
+      <div class="sports-grid">
+        {actividades.map((item) => (
+          <article class="sports-card">
+            <div class="sports-icon">{item.icono}</div>
+            <span class="category">{item.categoria}</span>
+            <h3>{item.titulo}</h3>
+            <p>{item.descripcion}</p>
+          </article>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <section class="sports-bottom">
+    <div class="container">
+      <span class="section-label">¿HAY UN EVENTO DEPORTIVO?</span>
+      <h2>Ayúdanos a compartirlo con Mindo.</h2>
+      <p>
+        Envíanos información sobre torneos, encuentros y logros deportivos
+        para que más personas puedan conocerlos.
+      </p>
+      <a href="/contacto/" class="btn">Informar sobre un evento →</a>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .sports-hero {
+    padding: 80px 0;
+    color: white;
+    background: linear-gradient(120deg, #172b3a, #28546a);
+  }
+
+  .eyebrow {
+    color: #b9e7f7;
+    font-size: 11px;
+    letter-spacing: 1.5px;
+    font-weight: 800;
+  }
+
+  .sports-hero h1 {
+    margin: 20px 0;
+    font-size: clamp(40px, 6vw, 66px);
+    line-height: 1.08;
+  }
+
+  .sports-hero h1 span {
+    color: #9de7b1;
+  }
+
+  .sports-hero p {
+    max-width: 610px;
+    color: #e2e8f0;
+    font-size: 16px;
+    margin-bottom: 28px;
+  }
+
+  .section-label,
+  .category {
+    color: #237a45;
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 1.2px;
+  }
+
+  .sports-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 22px;
+    margin-top: 30px;
+  }
+
+  .sports-card {
+    padding: 28px;
+    background: white;
+    border: 1px solid #e2e8f0;
+    border-radius: 16px;
+    transition: transform .2s, box-shadow .2s;
+  }
+
+  .sports-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 25px #172b3a12;
+  }
+
+  .sports-icon {
+    width: 62px;
+    height: 62px;
+    display: grid;
+    place-items: center;
+    margin-bottom: 20px;
+    background: #eaf6ed;
+    border-radius: 16px;
+    font-size: 32px;
+  }
+
+  .sports-card h3 {
+    margin: 12px 0 8px;
+    font-size: 22px;
+  }
+
+  .sports-card p,
+  .sports-bottom p {
+    color: #64748b;
+    font-size: 14px;
+  }
+
+  .sports-bottom {
+    padding: 60px 0;
+    background: #eaf6ed;
+  }
+
+  .sports-bottom h2 {
+    max-width: 700px;
+    font-size: clamp(28px, 4vw, 40px);
+    line-height: 1.2;
+  }
+
+  .sports-bottom p {
+    max-width: 650px;
+    margin-bottom: 24px;
+  }
+
+  @media (max-width: 600px) {
+    .sports-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>

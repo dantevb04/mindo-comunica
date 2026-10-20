@@ -1,0 +1,108 @@
+---
+const enlaces = [
+  { texto: "Inicio", href: "/" },
+  { texto: "Noticias", href: "/noticias/" },
+  { texto: "Cultura", href: "/cultura/" },
+  { texto: "Deportes", href: "/deportes/" },
+  { texto: "Emprendimientos", href: "/emprendimientos/" },
+  { texto: "Turismo", href: "/turismo/" },
+  { texto: "Contacto", href: "/contacto/" },
+];
+---
+
+<header class="navbar">
+  <a href="/" class="marca" aria-label="Mindo Comunica - Inicio">
+    <img src="/img/1.png" alt="Logo de Mindo Comunica" />
+  </a>
+
+  <nav aria-label="Navegación principal">
+    {enlaces.map((enlace) => (
+      <a href={enlace.href}>{enlace.texto}</a>
+    ))}
+  </nav>
+</header>
+
+<style>
+  .navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 24px;
+    padding: 12px 5%;
+    background: #DCEEFF;
+    box-shadow: 0 3px 12px rgba(18, 59, 102, 0.12);
+    flex-wrap: wrap;
+  }
+
+  .marca {
+    display: inline-flex;
+    align-items: center;
+    flex-shrink: 0;
+  }
+
+  .marca img {
+    display: block;
+    width: 175px;
+    height: 65px;
+    object-fit: contain;
+    background: transparent;
+    border-radius: 0;
+  }
+
+  nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  nav a {
+    color: #1769AA;
+    text-decoration: none;
+    font-size: 15px;
+    font-weight: 600;
+    transition: color 0.2s ease;
+  }
+
+  nav a:hover {
+    color: #123B5D;
+  }
+
+  nav a:focus-visible,
+  .marca:focus-visible {
+    outline: 2px solid #1769AA;
+    outline-offset: 5px;
+    border-radius: 4px;
+  }
+
+  @media (max-width: 900px) {
+    .navbar {
+      justify-content: center;
+    }
+
+    nav {
+      gap: 15px;
+    }
+  }
+
+  @media (max-width: 600px) {
+    .navbar {
+      padding: 12px 4%;
+      gap: 12px;
+    }
+
+    .marca img {
+      width: 150px;
+      height: 55px;
+    }
+
+    nav {
+      gap: 12px;
+    }
+
+    nav a {
+      font-size: 14px;
+    }
+  }
+</style>
