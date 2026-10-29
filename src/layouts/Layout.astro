@@ -1,89 +1,53 @@
 
 ---
-import Navbar from "../components/Navbar.astro";
 import "../styles/global.css";
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
 
-const { titulo = "Mindo Comunica" } = Astro.props;
+const { title = "Mindo Comunica" } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="es">
   <head>
     <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="viewport" content="width=device-width" />
+
     <meta
       name="description"
-      content="Noticias, turismo, cultura y emprendimientos de Mindo, Ecuador."
+      content="Mindo Comunica: noticias, cultura, turismo, naturaleza y comunidad."
     />
-    <meta name="theme-color" content="#123B66" />
-    <title>{titulo} | Mindo Comunica</title>
+
+    <meta name="theme-color" content="#0b1f3a" />
+
+    <title>{title}</title>
   </head>
 
-  <body>
+  <body id="top">
     <Navbar />
 
     <main>
       <slot />
     </main>
 
-    <footer class="footer">
-      <div class="container footer-inner">
-        <div class="footer-marca">
-          <strong>Mindo Comunica</strong>
-          <p>La voz de nuestra comunidad.</p>
-        </div>
-
-        <p class="copyright">
-          © {new Date().getFullYear()} Mindo Comunica.
-          Todos los derechos reservados.
-        </p>
-      </div>
-    </footer>
+    <Footer />
   </body>
 </html>
 
 <style>
-  .footer {
-    background: #123b66;
-    color: #ffffff;
-    padding: 35px 0;
-    border-top: 4px solid #1976d2;
+  :global(html) {
+    scroll-behavior: smooth;
   }
 
-  .footer-inner {
+  :global(body) {
+    margin: 0;
+    min-height: 100vh;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
-    gap: 20px;
-    flex-wrap: wrap;
+    flex-direction: column;
   }
 
-  .footer-marca strong {
-    color: #ffffff;
-    font-size: 22px;
-    letter-spacing: 0.3px;
-  }
-
-  .footer p {
-    margin: 8px 0 0;
-    color: #dbeafe;
-    font-size: 14px;
-    line-height: 1.6;
-  }
-
-  .copyright {
-    max-width: 420px;
-    text-align: right;
-  }
-
-  @media (max-width: 600px) {
-    .footer-inner {
-      flex-direction: column;
-      align-items: flex-start;
-    }
-
-    .copyright {
-      text-align: left;
-    }
+  main {
+    flex: 1;
+    width: 100%;
   }
 </style>

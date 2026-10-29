@@ -11,7 +11,7 @@ const negocios = [
       "Una propuesta gastronómica de ejemplo inspirada en los sabores y productos de la región.",
     direccion: "Centro de Mindo",
     imagen:
-      "https://images.unsplash.com/photo-1414235077428-338989a2e8c0?auto=format&fit=crop&w=1000&q=80",
+      "/img/gastronomia.png",
     destacado: true,
   },
   {
@@ -22,7 +22,7 @@ const negocios = [
       "Una experiencia turística de demostración para descubrir senderos, aves y paisajes naturales.",
     direccion: "Mindo, Ecuador",
     imagen:
-      "https://images.unsplash.com/photo-1444464666168-49d633b86797?auto=format&fit=crop&w=1000&q=80",
+      "/img/aves.png",
     destacado: true,
   },
   {
@@ -33,7 +33,7 @@ const negocios = [
       "Una muestra de cómo los emprendimientos artesanales pueden compartir su creatividad con la comunidad.",
     direccion: "Centro de Mindo",
     imagen:
-      "https://images.unsplash.com/photo-1452860606245-08befc0ff44b?auto=format&fit=crop&w=1000&q=80",
+      "/img/artesanias.png",
     destacado: false,
   },
   {
@@ -44,7 +44,7 @@ const negocios = [
       "Un ejemplo de alojamiento turístico para quienes desean disfrutar de un entorno natural.",
     direccion: "Mindo, Ecuador",
     imagen:
-      "https://images.unsplash.com/photo-1445019980597-93fa8acb246c?auto=format&fit=crop&w=1000&q=80",
+      "/img/hospedajes.png",
     destacado: false,
   },
   {
@@ -55,7 +55,7 @@ const negocios = [
       "Una propuesta demostrativa dedicada al chocolate y a los productos inspirados en la región.",
     direccion: "Mindo, Ecuador",
     imagen:
-      "https://images.unsplash.com/photo-1548907040-4d42daa2c4a2?auto=format&fit=crop&w=1000&q=80",
+      "/img/chocolate.png",
     destacado: false,
   },
   {
@@ -66,8 +66,7 @@ const negocios = [
       "Una idea de emprendimiento turístico centrada en experiencias de aventura y contacto con la naturaleza.",
     direccion: "Mindo, Ecuador",
     imagen:
-      "https://images.unsplash.com/photo-1472396961693-142e6e269027?auto=format&fit=crop&w=1000&q=80",
-    destacado: false,
+      "/img/aventuras.png"
   },
 ];
 
@@ -146,13 +145,7 @@ const categorias = ["Todos", ...new Set(negocios.map((negocio) => negocio.tipo))
                 <span>{negocio.direccion}</span>
               </div>
 
-              <a
-                href="/contacto/"
-                class="business-link"
-                aria-label={`Consultar por ${negocio.nombre}`}
-              >
-                Solicitar información <span aria-hidden="true">→</span>
-              </a>
+        
             </div>
           </article>
         ))}
@@ -173,19 +166,7 @@ const categorias = ["Todos", ...new Set(negocios.map((negocio) => negocio.tipo))
     </div>
   </section>
 
-  <section class="business-cta">
-    <div class="container cta-content">
-      <div>
-        <span class="eyebrow">CRECEMOS JUNTOS</span>
-        <h2>¿Tienes un emprendimiento en Mindo?</h2>
-        <p>
-          Nos gustaría conocer tu proyecto y las iniciativas que aportan
-          al crecimiento de nuestra comunidad.
-        </p>
-      </div>
-      <a href="/contacto/" class="btn btn-light">Contáctanos</a>
-    </div>
-  </section>
+  
 </Layout>
 
 <script>

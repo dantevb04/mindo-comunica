@@ -1,3 +1,4 @@
+
 ---
 const enlaces = [
   { texto: "Inicio", href: "/" },
@@ -6,103 +7,252 @@ const enlaces = [
   { texto: "Deportes", href: "/deportes/" },
   { texto: "Emprendimientos", href: "/emprendimientos/" },
   { texto: "Turismo", href: "/turismo/" },
-  { texto: "Contacto", href: "/contacto/" },
 ];
+
+const rutaActual = Astro.url.pathname.replace(/\/+$/, "") || "/";
+
+function estaActivo(href) {
+  const rutaEnlace = href.replace(/\/+$/, "") || "/";
+  return rutaActual === rutaEnlace;
+}
 ---
 
 <header class="navbar">
-  <a href="/" class="marca" aria-label="Mindo Comunica - Inicio">
-    <img src="/img/1.png" alt="Logo de Mindo Comunica" />
-  </a>
+  <div class="navbar-contenedor">
+    <a href="/" class="navbar-marca" aria-label="Mindo Comunica - Inicio">
+      <img src="/img/1.png" alt="Logo de Mindo Comunica" />
+    </a>
 
-  <nav aria-label="Navegación principal">
-    {enlaces.map((enlace) => (
-      <a href={enlace.href}>{enlace.texto}</a>
-    ))}
-  </nav>
+    <nav class="nav-enlaces" id="menu-principal" aria-label="Navegación principal">
+      {enlaces.map((enlace) => {
+        const activo = estaActivo(enlace.href);
+
+        return (
+          <a
+            href={enlace.href}
+            class:list={["nav-enlace", { activo }]}
+            aria-current={activo ? "page" : undefined}
+          >
+            {enlace.texto}
+          </a>
+        );
+      })}
+    </nav>
+
+    <button
+      class="menu-boton"
+      id="menu-boton"
+      type="button"
+      aria-label="Abrir menú de navegación"
+      aria-expanded="false"
+      aria-controls="menu-principal"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
 </header>
+
+<script>
+  const boton = document.querySelector("#menu-boton");
+  const menu = document.querySelector("#menu-principal");
+
+  if (boton && menu) {
+    boton.addEventListener("click", () => {
+      const abierto = menu.classList.toggle("menu-abierto");
+
+      boton.setAttribute("aria-expanded", String(abierto));
+      boton.setAttribute(
+        "aria-label",
+        abierto ? "Cerrar menú de navegación" : "Abrir menú de navegación"
+      );
+    });
+
+    menu.querySelectorAll("a").forEach((enlace) => {
+      enlace.addEventListener("click", () => {
+        menu.classList.remove("menu-abierto");
+        boton.setAttribute("aria-expanded", "false");
+        boton.setAttribute("aria-label", "Abrir menú de navegación");
+      });
+    });
+  }
+</script>
 
 <style>
   .navbar {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 24px;
-    padding: 12px 5%;
-    background: #DCEEFF;
-    box-shadow: 0 3px 12px rgba(18, 59, 102, 0.12);
-    flex-wrap: wrap;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+    width: 100%;
+    background: #dceeff;
+    box-shadow: 0 2px 8px rgba(11, 31, 58, 0.08);
   }
 
-  .marca {
-    display: inline-flex;
+  .navbar-contenedor {
+    width: min(1400px, 94%);
+    min-height: 68px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 18px;
+  }
+
+  /* LOGO MÁS GRANDE */
+  .navbar-marca {
+    display: flex;
     align-items: center;
     flex-shrink: 0;
+    text-decoration: none;
   }
 
-  .marca img {
+  .navbar-marca img {
     display: block;
-    width: 175px;
-    height: 65px;
+    width: 145px;
+    height: 64px;
     object-fit: contain;
-    background: transparent;
-    border-radius: 0;
+    transition: transform 0.25s ease;
   }
 
-  nav {
+  .navbar-marca:hover img {
+    transform: scale(1.04);
+  }
+
+  /* ENLACES DE NAVEGACIÓN */
+  .nav-enlaces {
     display: flex;
     align-items: center;
+    justify-content: flex-end;
+    gap: 3px;
+  }
+
+  .nav-enlace {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
     justify-content: center;
-    gap: 20px;
-    flex-wrap: wrap;
-  }
-
-  nav a {
-    color: #1769AA;
+    padding: 9px 10px;
+    border-radius: 8px;
+    color: #123b5d;
     text-decoration: none;
-    font-size: 15px;
+    font-size: 14px;
     font-weight: 600;
-    transition: color 0.2s ease;
+    white-space: nowrap;
+    transition: color 0.2s ease, background-color 0.2s ease;
   }
 
-  nav a:hover {
-    color: #123B5D;
+  .nav-enlace:hover {
+    color: #1769aa;
+    background-color: #b9dcff;
   }
 
-  nav a:focus-visible,
-  .marca:focus-visible {
-    outline: 2px solid #1769AA;
-    outline-offset: 5px;
+  /* SECCIÓN ACTIVA */
+  .nav-enlace.activo {
+    color: #1769aa;
+    background-color: #b9dcff;
+    font-weight: 800;
+  }
+
+  .nav-enlace.activo::after {
+    content: "";
+    position: absolute;
+    bottom: 3px;
+    left: 10px;
+    right: 10px;
+    height: 3px;
     border-radius: 4px;
+    background-color: #1769aa;
   }
 
-  @media (max-width: 900px) {
-    .navbar {
-      justify-content: center;
-    }
-
-    nav {
-      gap: 15px;
-    }
+  .nav-enlace:focus-visible,
+  .navbar-marca:focus-visible,
+  .menu-boton:focus-visible {
+    outline: 2px solid #1769aa;
+    outline-offset: 3px;
   }
 
-  @media (max-width: 600px) {
-    .navbar {
-      padding: 12px 4%;
+  /* BOTÓN PARA CELULARES */
+  .menu-boton {
+    display: none;
+    flex-direction: column;
+    justify-content: center;
+    gap: 5px;
+    width: 42px;
+    height: 42px;
+    padding: 9px;
+    border: 1px solid #b9dcff;
+    border-radius: 8px;
+    background: #b9dcff;
+    cursor: pointer;
+  }
+
+  .menu-boton span {
+    width: 100%;
+    height: 3px;
+    border-radius: 3px;
+    background: #1769aa;
+  }
+
+  /* TABLETS Y CELULARES */
+  @media (max-width: 1050px) {
+    .navbar-contenedor {
+      min-height: 68px;
       gap: 12px;
     }
 
-    .marca img {
-      width: 150px;
-      height: 55px;
+    .navbar-marca img {
+      width: 130px;
+      height: 60px;
     }
 
-    nav {
-      gap: 12px;
+    .menu-boton {
+      display: flex;
+      flex-shrink: 0;
     }
 
-    nav a {
-      font-size: 14px;
+    .nav-enlaces {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      right: 0;
+      padding: 12px 5% 18px;
+      flex-direction: column;
+      align-items: stretch;
+      gap: 4px;
+      background: #dceeff;
+      box-shadow: 0 6px 12px rgba(11, 31, 58, 0.1);
+    }
+
+    .nav-enlaces.menu-abierto {
+      display: flex;
+    }
+
+    .nav-enlace {
+      justify-content: flex-start;
+      padding: 12px 16px;
+      font-size: 15px;
+    }
+
+    .nav-enlace.activo::after {
+      top: 8px;
+      bottom: 8px;
+      left: 4px;
+      right: auto;
+      width: 4px;
+      height: auto;
+    }
+  }
+
+  @media (max-width: 380px) {
+    .navbar-contenedor {
+      width: 92%;
+    }
+
+    .navbar-marca img {
+      width: 115px;
+      height: 54px;
     }
   }
 </style>
