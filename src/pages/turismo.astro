@@ -1,13 +1,16 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const imagenFondo = "/img/mindo_turismo_fondo.png";
+
 const destinos = [
   {
     nombre: "Cascadas de Mindo",
     tipo: "NATURALEZA",
     descripcion:
       "Explora senderos rodeados de vegetación y descubre la belleza de las cascadas de la zona.",
-    icono: "💧",
+    imagen: "/img/mindo_paraiso.png",
+    alt: "Cascadas y naturaleza de Mindo",
     numero: "01",
   },
   {
@@ -15,7 +18,8 @@ const destinos = [
     tipo: "AVENTURA Y FAUNA",
     descripcion:
       "Descubre la diversidad de aves que habitan el bosque nublado y sus alrededores.",
-    icono: "🦜",
+    imagen: "/img/aves_mindo.png",
+    alt: "Aves del bosque nublado de Mindo",
     numero: "02",
   },
   {
@@ -23,7 +27,8 @@ const destinos = [
     tipo: "ADRENALINA",
     descripcion:
       "Conoce experiencias de aventura que permiten disfrutar del paisaje desde otra perspectiva.",
-    icono: "🌳",
+    imagen: "/img/canopy_mindo.png",
+    alt: "Experiencia de canopy en Mindo",
     numero: "03",
   },
   {
@@ -31,7 +36,8 @@ const destinos = [
     tipo: "EDUCACIÓN AMBIENTAL",
     descripcion:
       "Aprende sobre el ciclo de vida de las mariposas y la importancia de proteger su hábitat.",
-    icono: "🦋",
+    imagen: "/img/mariposario_mindo.png",
+    alt: "Mariposas en un mariposario",
     numero: "04",
   },
   {
@@ -39,7 +45,8 @@ const destinos = [
     tipo: "ECOTURISMO",
     descripcion:
       "Disfruta de espacios naturales y recorre caminos rodeados de vegetación.",
-    icono: "🥾",
+    imagen: "/img/rios_senderos_mindo.png",
+    alt: "Ríos y senderos naturales de Mindo",
     numero: "05",
   },
   {
@@ -47,14 +54,18 @@ const destinos = [
     tipo: "EXPERIENCIAS LOCALES",
     descripcion:
       "Conoce los sabores, las tradiciones y los emprendimientos de la comunidad.",
-    icono: "🍫",
+    imagen: "/img/gastronomia_turismo_mindo.png",
+    alt: "Gastronomía y experiencias locales de Mindo",
     numero: "06",
   },
 ];
 ---
 
-<Layout titulo="Turismo">
-  <section class="tour-hero">
+<Layout title="Turismo | Mindo Comunica">
+  <section
+    class="tour-hero"
+    style={`--imagen-fondo: url('${imagenFondo}')`}
+  >
     <div class="container">
       <span class="eyebrow">DESCUBRE UN LUGAR EXTRAORDINARIO</span>
 
@@ -86,16 +97,22 @@ const destinos = [
       <div class="destination-grid">
         {destinos.map((destino) => (
           <article class="destination-card">
-            <div class="destination-top">
-              <span class="destination-icon">{destino.icono}</span>
+            <div class="destination-image">
+              <img
+                src={destino.imagen}
+                alt={destino.alt}
+                loading="lazy"
+              />
               <span class="destination-number">{destino.numero}</span>
             </div>
 
-            <span class="destination-type">{destino.tipo}</span>
+            <div class="destination-content">
+              <span class="destination-type">{destino.tipo}</span>
 
-            <h3>{destino.nombre}</h3>
+              <h3>{destino.nombre}</h3>
 
-            <p>{destino.descripcion}</p>
+              <p>{destino.descripcion}</p>
+            </div>
           </article>
         ))}
       </div>
@@ -106,33 +123,46 @@ const destinos = [
     <div class="container eco-content">
       <span class="section-label">TURISMO RESPONSABLE</span>
 
-      <h2>
-        Disfrutar de la naturaleza también significa protegerla.
-      </h2>
+      <h2>Disfrutar de la naturaleza también significa protegerla.</h2>
 
       <p>
         Respeta los senderos, evita dejar basura, cuida la fauna silvestre y
         apoya a la comunidad durante tu visita.
       </p>
-
-      
     </div>
   </section>
 </Layout>
 
-
 <style>
+  /* PORTADA */
   .tour-hero {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 480px;
     padding: 90px 0;
-    color: white;
-    background:
-      linear-gradient(90deg, rgba(18, 59, 102, 0.92), rgba(18, 59, 102, 0.57)),
-      url("https://images.unsplash.com/photo-1448375240586-882707db888b?auto=format&fit=crop&w=1800&q=85")
-        center / cover;
+    color: #f0f7ff;
+    background-image:
+      linear-gradient(
+        110deg,
+        rgba(18, 59, 93, 0.82),
+        rgba(23, 105, 170, 0.58)
+      ),
+      var(--imagen-fondo);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .tour-hero .container {
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
-    color: #bbdefb;
+    color: #b9dcff;
     font-size: 11px;
     letter-spacing: 1.6px;
     font-weight: 800;
@@ -143,21 +173,40 @@ const destinos = [
     font-size: clamp(40px, 6vw, 66px);
     line-height: 1.08;
     letter-spacing: -1.5px;
+    color: #f0f7ff;
   }
 
   .tour-hero h1 span {
-    color: #90caf9;
+    color: #b9dcff;
   }
 
   .tour-hero p {
     max-width: 610px;
     margin-bottom: 28px;
-    color: #eaf4ff;
+    color: #e5f2ff;
     font-size: 16px;
+    line-height: 1.8;
   }
 
+  .btn {
+    display: inline-block;
+    padding: 13px 23px;
+    border-radius: 8px;
+    background: #b9dcff;
+    color: #123b5d;
+    font-weight: 700;
+    text-decoration: none;
+    transition: background 0.2s, transform 0.2s;
+  }
+
+  .btn:hover {
+    background: #dceeff;
+    transform: translateY(-2px);
+  }
+
+  /* DESTINOS */
   .section-label {
-    color: #1976d2;
+    color: #1769aa;
     font-size: 11px;
     letter-spacing: 1.5px;
     font-weight: 800;
@@ -171,45 +220,61 @@ const destinos = [
   }
 
   .destination-card {
-    padding: 25px;
-    background: white;
+    overflow: hidden;
+    background: #eaf4ff;
     border: 1px solid #d6e6f5;
     border-radius: 15px;
-    transition:
-      transform 0.2s,
-      box-shadow 0.2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .destination-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(18, 59, 102, 0.12);
+    box-shadow: 0 12px 25px rgba(18, 59, 93, 0.12);
   }
 
-  .destination-top {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 22px;
+  /* FOTOGRAFÍAS */
+  .destination-image {
+    position: relative;
+    width: 100%;
+    height: 210px;
+    overflow: hidden;
+    background: #b9dcff;
   }
 
-  .destination-icon {
-    display: grid;
-    place-items: center;
-    width: 60px;
-    height: 60px;
-    border-radius: 15px;
-    background: #eaf4ff;
-    font-size: 30px;
+  .destination-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
+
+  .destination-card:hover .destination-image img {
+    transform: scale(1.06);
   }
 
   .destination-number {
-    color: #b0c8df;
-    font-size: 28px;
+    position: absolute;
+    top: 13px;
+    right: 13px;
+    display: grid;
+    place-items: center;
+    width: 43px;
+    height: 43px;
+    border-radius: 10px;
+    background: rgba(220, 238, 255, 0.94);
+    color: #123b5d;
+    font-size: 16px;
     font-weight: 800;
   }
 
+  .destination-content {
+    padding: 23px;
+  }
+
   .destination-type {
-    color: #1976d2;
+    color: #1769aa;
     font-size: 10px;
     font-weight: 800;
     letter-spacing: 1px;
@@ -217,19 +282,21 @@ const destinos = [
 
   .destination-card h3 {
     margin: 10px 0;
-    color: #123b66;
+    color: #123b5d;
     font-size: 21px;
   }
 
   .destination-card p {
     margin-bottom: 0;
-    color: #64748b;
+    color: #526b83;
     font-size: 14px;
+    line-height: 1.7;
   }
 
+  /* TURISMO RESPONSABLE */
   .eco-section {
     padding: 65px 0;
-    background: #eaf4ff;
+    background: #dceeff;
   }
 
   .eco-content {
@@ -238,7 +305,7 @@ const destinos = [
 
   .eco-content h2 {
     max-width: 700px;
-    color: #123b66;
+    color: #123b5d;
     font-size: clamp(29px, 4vw, 42px);
     line-height: 1.2;
   }
@@ -246,9 +313,11 @@ const destinos = [
   .eco-content p {
     max-width: 650px;
     margin-bottom: 25px;
-    color: #526477;
+    color: #526b83;
+    line-height: 1.8;
   }
 
+  /* DISEÑO RESPONSIVE */
   @media (max-width: 800px) {
     .destination-grid {
       grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -261,7 +330,12 @@ const destinos = [
     }
 
     .tour-hero {
+      min-height: 400px;
       padding: 65px 0;
+    }
+
+    .destination-image {
+      height: 240px;
     }
   }
 </style>

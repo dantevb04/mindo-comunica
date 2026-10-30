@@ -1,175 +1,341 @@
 ---
 import Layout from "../layouts/Layout.astro";
 
+const imagenFondo = "/img/mindo_cultura_fondo.png";
+
 const experiencias = [
   {
-    icono: "🎭",
+    imagen: "/img/tradicion_cultura_mindo.png",
     categoria: "TRADICIONES",
     titulo: "Tradiciones de nuestra comunidad",
-    descripcion: "Conoce las costumbres, celebraciones y expresiones culturales que forman parte de la identidad local.",
+    descripcion:
+      "Conoce las costumbres, celebraciones y expresiones culturales que forman parte de la identidad local.",
+    alt: "Tradiciones y cultura de Mindo",
   },
   {
-    icono: "🎨",
+    imagen: "/img/artesanias_mindo.png",
     categoria: "ARTE Y CREATIVIDAD",
     titulo: "El talento de nuestra gente",
-    descripcion: "Descubre a las personas que expresan su creatividad mediante el arte, las artesanías y la cultura.",
+    descripcion:
+      "Descubre a las personas que expresan su creatividad mediante el arte, las artesanías y la cultura.",
+    alt: "Arte y creatividad de la comunidad",
   },
   {
-    icono: "🍫",
+    imagen: "/img/gastronomia_mindo.png",
     categoria: "GASTRONOMÍA",
     titulo: "Sabores de Mindo",
-    descripcion: "Explora productos, sabores y experiencias gastronómicas ofrecidas por emprendimientos locales.",
+    descripcion:
+      "Explora productos, sabores y experiencias gastronómicas ofrecidas por emprendimientos locales.",
+    alt: "Gastronomía y sabores de Mindo",
   },
   {
-    icono: "📸",
+    imagen: "/img/mindo_noticias_fondo.png",
     categoria: "HISTORIAS LOCALES",
     titulo: "Memorias de nuestra tierra",
-    descripcion: "Un espacio para compartir historias, fotografías y recuerdos de la comunidad.",
+    descripcion:
+      "Un espacio para compartir historias, fotografías y recuerdos de la comunidad.",
+    alt: "Historias y recuerdos de Mindo",
   },
 ];
 ---
 
-<Layout titulo="Cultura">
-  <section class="culture-hero">
-    <div class="container">
-      <span class="eyebrow">IDENTIDAD · HISTORIA · TRADICIÓN</span>
-      <h1>La cultura que<br /><span>nos une.</span></h1>
-      <p>
-        Historias, tradiciones, creatividad y experiencias que dan vida
-        a la identidad de nuestra comunidad.
-      </p>
-      <a href="#experiencias" class="btn">Explorar cultura ↓</a>
-    </div>
-  </section>
+<Layout title="Cultura | Mindo Comunica">
+  <main class="pagina-cultura">
+    <section
+      class="hero-cultura"
+      style={`--imagen-fondo: url('${imagenFondo}')`}
+    >
+      <div class="hero-contenido">
+        <span class="etiqueta">NUESTRA IDENTIDAD</span>
 
-  <section class="section" id="experiencias">
-    <div class="container">
-      <span class="section-label">NUESTRA IDENTIDAD</span>
-      <h2 class="section-title">Cultura viva de Mindo</h2>
-      <p class="section-description">
-        Un espacio para conocer y valorar las expresiones culturales,
-        los sabores y las historias de nuestra localidad.
-      </p>
+        <h1>Cultura viva de Mindo</h1>
 
-      <div class="culture-grid">
-        {experiencias.map((item) => (
-          <article class="culture-card">
-            <div class="culture-icon">{item.icono}</div>
-            <span class="category">{item.categoria}</span>
-            <h3>{item.titulo}</h3>
-            <p>{item.descripcion}</p>
+        <p>
+          Un espacio para conocer y valorar las expresiones culturales,
+          los sabores y las historias de nuestra localidad.
+        </p>
+
+        <a href="#experiencias" class="boton-explorar">
+          Explorar nuestra cultura
+          <span aria-hidden="true">→</span>
+        </a>
+      </div>
+    </section>
+
+    <section class="seccion-experiencias" id="experiencias">
+      <div class="encabezado-seccion">
+        <span class="subtitulo">IDENTIDAD Y TRADICIÓN</span>
+        <h2>Descubre nuestra cultura</h2>
+        <p>
+          Mindo es una comunidad llena de creatividad, sabores,
+          tradiciones e historias que merecen ser compartidas.
+        </p>
+      </div>
+
+      <div class="experiencias-grid">
+        {experiencias.map((experiencia) => (
+          <article class="experiencia-card">
+            <div class="imagen-card">
+              <img
+                src={experiencia.imagen}
+                alt={experiencia.alt}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="contenido-card">
+              <span class="categoria">{experiencia.categoria}</span>
+
+              <h3>{experiencia.titulo}</h3>
+
+              <p>{experiencia.descripcion}</p>
+            </div>
           </article>
         ))}
       </div>
-    </div>
-  </section>
+    </section>
 
-
+    <section class="mensaje-cultura">
+      <div class="mensaje-contenido">
+        <span class="subtitulo">NUESTRA COMUNIDAD</span>
+        <h2>La cultura de Mindo vive en su gente</h2>
+        <p>
+          Cada tradición, expresión artística, sabor e historia
+          representa una parte de nuestra identidad. Conocerlas
+          es valorar lo que somos y mantener viva nuestra comunidad.
+        </p>
+      </div>
+    </section>
+  </main>
 </Layout>
 
-
 <style>
-  .culture-hero {
-    padding: 80px 0;
-    color: white;
-    background: linear-gradient(120deg, #123b66, #1976d2);
+  .pagina-cultura {
+    background: #f0f7ff;
+    color: #123b5d;
   }
 
-  .eyebrow {
-    color: #bbdefb;
-    font-size: 11px;
-    letter-spacing: 1.5px;
+  .hero-cultura {
+    min-height: 470px;
+    display: flex;
+    align-items: center;
+    padding: 80px 9%;
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    background-image:
+      linear-gradient(
+        100deg,
+        rgba(18, 59, 93, 0.86),
+        rgba(23, 105, 170, 0.58)
+      ),
+      var(--imagen-fondo);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .hero-contenido {
+    max-width: 720px;
+    position: relative;
+    z-index: 1;
+  }
+
+  .etiqueta,
+  .subtitulo {
+    display: inline-block;
+    color: #1769aa;
+    font-size: 0.78rem;
     font-weight: 800;
+    letter-spacing: 2px;
   }
 
-  .culture-hero h1 {
-    margin: 20px 0;
-    font-size: clamp(40px, 6vw, 66px);
+  .hero-cultura .etiqueta {
+    color: #dceeff;
+  }
+
+  .hero-cultura h1 {
+    color: #f0f7ff;
+    font-size: clamp(2.7rem, 6vw, 4.5rem);
     line-height: 1.08;
-  }
-
-  .culture-hero h1 span {
-    color: #90caf9;
-  }
-
-  .culture-hero p {
-    max-width: 610px;
-    color: #eaf4ff;
-    font-size: 16px;
-    margin-bottom: 28px;
-  }
-
-  .section-label,
-  .category {
-    color: #1976d2;
-    font-size: 11px;
+    margin: 20px 0;
     font-weight: 800;
-    letter-spacing: 1.2px;
   }
 
-  .culture-grid {
+  .hero-cultura p {
+    color: #e7f3ff;
+    font-size: 1.15rem;
+    line-height: 1.8;
+    max-width: 620px;
+    margin-bottom: 30px;
+  }
+
+  .boton-explorar {
+    display: inline-flex;
+    align-items: center;
+    gap: 12px;
+    padding: 14px 23px;
+    border-radius: 9px;
+    background: #dceeff;
+    color: #123b5d;
+    text-decoration: none;
+    font-weight: 750;
+    transition: 0.3s ease;
+  }
+
+  .boton-explorar:hover {
+    background: #b9dcff;
+    transform: translateY(-3px);
+  }
+
+  .seccion-experiencias {
+    padding: 85px 8%;
+  }
+
+  .encabezado-seccion {
+    text-align: center;
+    max-width: 720px;
+    margin: 0 auto 48px;
+  }
+
+  .encabezado-seccion h2 {
+    font-size: clamp(2rem, 4vw, 2.8rem);
+    color: #123b5d;
+    margin: 13px 0;
+  }
+
+  .encabezado-seccion p {
+    color: #54718b;
+    line-height: 1.8;
+    font-size: 1rem;
+  }
+
+  .experiencias-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
-    gap: 22px;
-    margin-top: 30px;
+    gap: 28px;
+    max-width: 1150px;
+    margin: 0 auto;
   }
 
-  .culture-card {
-    padding: 28px;
-    background: white;
-    border: 1px solid #d6e6f5;
-    border-radius: 16px;
-    transition: transform .2s, box-shadow .2s;
+  .experiencia-card {
+    overflow: hidden;
+    background: #dceeff;
+    border: 1px solid rgba(23, 105, 170, 0.12);
+    border-radius: 17px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
 
-  .culture-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 12px 25px rgba(18, 59, 102, 0.12);
+  .experiencia-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 12px 30px rgba(18, 59, 93, 0.12);
   }
 
-  .culture-icon {
-    width: 62px;
-    height: 62px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 20px;
-    background: #eaf4ff;
-    border-radius: 16px;
-    font-size: 32px;
+  .imagen-card {
+    height: 260px;
+    overflow: hidden;
+    background: #b9dcff;
   }
 
-  .culture-card h3 {
-    margin: 12px 0 8px;
-    font-size: 22px;
-    color: #123b66;
+  .imagen-card img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.4s ease;
   }
 
-  .culture-card p,
-  .culture-bottom p {
-    color: #64748b;
-    font-size: 14px;
+  .experiencia-card:hover .imagen-card img {
+    transform: scale(1.05);
   }
 
-  .culture-bottom {
-    padding: 60px 0;
-    background: #eaf4ff;
+  .contenido-card {
+    padding: 26px;
   }
 
-  .culture-bottom h2 {
-    max-width: 700px;
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.2;
-    color: #123b66;
+  .categoria {
+    color: #1769aa;
+    font-size: 0.75rem;
+    font-weight: 800;
+    letter-spacing: 1.4px;
   }
 
-  .culture-bottom p {
-    max-width: 650px;
-    margin-bottom: 24px;
+  .contenido-card h3 {
+    color: #123b5d;
+    font-size: 1.45rem;
+    margin: 12px 0;
   }
 
-  @media (max-width: 600px) {
-    .culture-grid {
+  .contenido-card p {
+    color: #54718b;
+    font-size: 0.97rem;
+    line-height: 1.8;
+    margin: 0;
+  }
+
+  .mensaje-cultura {
+    padding: 75px 8%;
+    background: #b9dcff;
+    text-align: center;
+  }
+
+  .mensaje-contenido {
+    max-width: 760px;
+    margin: 0 auto;
+  }
+
+  .mensaje-cultura h2 {
+    color: #123b5d;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    margin: 15px 0;
+  }
+
+  .mensaje-cultura p {
+    color: #315b7d;
+    line-height: 1.9;
+    font-size: 1.02rem;
+  }
+
+  @media (max-width: 760px) {
+    .hero-cultura {
+      min-height: 410px;
+      padding: 65px 7%;
+      background-position: center;
+    }
+
+    .seccion-experiencias {
+      padding: 65px 6%;
+    }
+
+    .experiencias-grid {
       grid-template-columns: 1fr;
+      gap: 22px;
+    }
+
+    .imagen-card {
+      height: 250px;
+    }
+
+    .mensaje-cultura {
+      padding: 60px 7%;
+    }
+  }
+
+  @media (max-width: 420px) {
+    .hero-cultura h1 {
+      font-size: 2.4rem;
+    }
+
+    .hero-cultura p {
+      font-size: 1rem;
+    }
+
+    .imagen-card {
+      height: 220px;
+    }
+
+    .contenido-card {
+      padding: 21px;
     }
   }
 </style>

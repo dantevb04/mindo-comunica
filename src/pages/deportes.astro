@@ -3,49 +3,71 @@ import Layout from "../layouts/Layout.astro";
 
 const actividades = [
   {
-    icono: "⚽",
+    imagen: "/img/futbol_mindo.png",
+    alt: "Actividad de fútbol",
     categoria: "FÚTBOL",
     titulo: "Pasión por el fútbol",
-    descripcion: "Un espacio para informar sobre encuentros, equipos y actividades futbolísticas de la comunidad.",
+    descripcion:
+      "Un espacio para informar sobre encuentros, equipos y actividades futbolísticas de la comunidad.",
   },
   {
-    icono: "🚴",
+    imagen: "/img/ciclismo_mindo.png",
+    alt: "Actividad de ciclismo",
     categoria: "CICLISMO",
     titulo: "Aventura sobre ruedas",
-    descripcion: "Conoce iniciativas y recorridos deportivos para disfrutar del entorno natural con responsabilidad.",
+    descripcion:
+      "Conoce iniciativas y recorridos deportivos para disfrutar del entorno natural con responsabilidad.",
   },
   {
-    icono: "🏃",
+    imagen: "/img/atletismo_mindo.png",
+    alt: "Actividad de atletismo",
     categoria: "ATLETISMO",
     titulo: "Muévete por tu bienestar",
-    descripcion: "Promovemos la actividad física, las carreras locales y los hábitos saludables.",
+    descripcion:
+      "Promovemos la actividad física, las carreras locales y los hábitos saludables.",
   },
   {
-    icono: "🏆",
+    imagen: "/img/eventos.png",
+    alt: "Eventos deportivos",
     categoria: "EVENTOS",
     titulo: "El deporte nos conecta",
-    descripcion: "Un espacio para compartir torneos, resultados y logros de deportistas locales.",
+    descripcion:
+      "Un espacio para compartir torneos, resultados y logros de deportistas locales.",
   },
 ];
+
+// Imagen de fondo de Deportes
+const imagenFondo = "/img/mindo_deportes_fondo.png";
 ---
 
-<Layout titulo="Deportes">
-  <section class="sports-hero">
-    <div class="container">
+<Layout title="Deportes | Mindo Comunica">
+  <!-- PORTADA DE DEPORTES -->
+  <section
+    class="sports-hero"
+    style={`--imagen-fondo: url('${imagenFondo}')`}
+  >
+    <div class="container sports-content">
       <span class="eyebrow">ENERGÍA · EQUIPO · COMUNIDAD</span>
-      <h1>El deporte nos<br /><span>mueve.</span></h1>
+
+      <h1>
+        El deporte nos<br />
+        <span>mueve.</span>
+      </h1>
+
       <p>
         Conoce las actividades deportivas, los encuentros y las historias
         de quienes representan el espíritu de nuestra comunidad.
       </p>
-      <a href="#actividades" class="btn">Explorar deportes ↓</a>
     </div>
   </section>
 
+  <!-- ACTIVIDADES DEPORTIVAS -->
   <section class="section" id="actividades">
     <div class="container">
       <span class="section-label">DEPORTE LOCAL</span>
+
       <h2 class="section-title">Actividad, salud y compañerismo</h2>
+
       <p class="section-description">
         Un lugar para destacar las iniciativas deportivas y fomentar
         la participación de niños, jóvenes y adultos.
@@ -54,28 +76,58 @@ const actividades = [
       <div class="sports-grid">
         {actividades.map((item) => (
           <article class="sports-card">
-            <div class="sports-icon">{item.icono}</div>
-            <span class="category">{item.categoria}</span>
-            <h3>{item.titulo}</h3>
-            <p>{item.descripcion}</p>
+            <div class="sports-image">
+              <img
+                src={item.imagen}
+                alt={item.alt}
+                loading="lazy"
+              />
+            </div>
+
+            <div class="sports-card-content">
+              <span class="category">{item.categoria}</span>
+
+              <h3>{item.titulo}</h3>
+
+              <p>{item.descripcion}</p>
+            </div>
           </article>
         ))}
       </div>
     </div>
   </section>
-
-  
 </Layout>
 
 <style>
+  /* PORTADA CON IMAGEN DE FONDO */
   .sports-hero {
-    padding: 80px 0;
-    color: white;
-    background: linear-gradient(120deg, #172b3a, #28546a);
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    min-height: 480px;
+    padding: 90px 0;
+    color: #f0f7ff;
+    background-image:
+      linear-gradient(
+        110deg,
+        rgba(18, 59, 93, 0.82),
+        rgba(23, 105, 170, 0.58)
+      ),
+      var(--imagen-fondo);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+  }
+
+  .sports-content {
+    position: relative;
+    z-index: 1;
   }
 
   .eyebrow {
-    color: #b9e7f7;
+    color: #b9dcff;
     font-size: 11px;
     letter-spacing: 1.5px;
     font-weight: 800;
@@ -85,27 +137,31 @@ const actividades = [
     margin: 20px 0;
     font-size: clamp(40px, 6vw, 66px);
     line-height: 1.08;
+    color: #f0f7ff;
   }
 
   .sports-hero h1 span {
-    color: #9de7b1;
+    color: #b9dcff;
   }
 
   .sports-hero p {
     max-width: 610px;
-    color: #e2e8f0;
+    color: #f0f7ff;
     font-size: 16px;
+    line-height: 1.8;
     margin-bottom: 28px;
   }
 
+  /* ENCABEZADOS */
   .section-label,
   .category {
-    color: #237a45;
+    color: #1769aa;
     font-size: 11px;
     font-weight: 800;
     letter-spacing: 1.2px;
   }
 
+  /* CUADRÍCULA DE ACTIVIDADES */
   .sports-grid {
     display: grid;
     grid-template-columns: repeat(2, minmax(0, 1fr));
@@ -114,59 +170,72 @@ const actividades = [
   }
 
   .sports-card {
-    padding: 28px;
-    background: white;
-    border: 1px solid #e2e8f0;
+    overflow: hidden;
+    background: #eaf4ff;
+    border: 1px solid #d6e6f5;
     border-radius: 16px;
-    transition: transform .2s, box-shadow .2s;
+    transition: transform 0.2s, box-shadow 0.2s;
   }
 
   .sports-card:hover {
     transform: translateY(-4px);
-    box-shadow: 0 12px 25px #172b3a12;
+    box-shadow: 0 12px 25px rgba(18, 59, 102, 0.12);
   }
 
-  .sports-icon {
-    width: 62px;
-    height: 62px;
-    display: grid;
-    place-items: center;
-    margin-bottom: 20px;
-    background: #eaf6ed;
-    border-radius: 16px;
-    font-size: 32px;
+  /* IMÁGENES DE LAS ACTIVIDADES */
+  .sports-image {
+    width: 100%;
+    height: 260px;
+    overflow: hidden;
+    background: #b9dcff;
+  }
+
+  .sports-image img {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+    transition: transform 0.4s ease;
+  }
+
+  .sports-card:hover .sports-image img {
+    transform: scale(1.06);
+  }
+
+  .sports-card-content {
+    padding: 28px;
   }
 
   .sports-card h3 {
     margin: 12px 0 8px;
     font-size: 22px;
+    color: #123b5d;
   }
 
-  .sports-card p,
-  .sports-bottom p {
-    color: #64748b;
+  .sports-card p {
+    color: #526b83;
     font-size: 14px;
+    line-height: 1.7;
   }
 
-  .sports-bottom {
-    padding: 60px 0;
-    background: #eaf6ed;
-  }
-
-  .sports-bottom h2 {
-    max-width: 700px;
-    font-size: clamp(28px, 4vw, 40px);
-    line-height: 1.2;
-  }
-
-  .sports-bottom p {
-    max-width: 650px;
-    margin-bottom: 24px;
-  }
-
+  /* DISEÑO RESPONSIVE */
   @media (max-width: 600px) {
+    .sports-hero {
+      min-height: 400px;
+      padding: 65px 0;
+    }
+
     .sports-grid {
       grid-template-columns: 1fr;
+    }
+
+    .sports-image {
+      height: 250px;
+    }
+
+    .sports-card-content {
+      padding: 24px;
     }
   }
 </style>
